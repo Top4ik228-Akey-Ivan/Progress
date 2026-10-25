@@ -1,0 +1,38 @@
+:root {
+  --color-primary: #005bff;      /* дуга прогресса, включённый переключатель */
+  --color-track: #eaeff5;        /* серая подложка кольца */
+  --color-switch-off: #d5dee8;   /* выключенный переключатель */
+  --color-text: #001a34;
+  --color-bg: #ffffff;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 14px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 16px;
+}
+
+.app__title {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}

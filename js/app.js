@@ -1,0 +1,1 @@
+console.log('Progress app: модуль загружен');
