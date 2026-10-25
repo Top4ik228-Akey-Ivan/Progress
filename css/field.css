@@ -1,0 +1,24 @@
+.field {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.field__input {
+  width: 48px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--field-border-color, #001a34);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  text-align: center;
+}
+
+.field__input:focus-visible {
+  outline: 2px solid var(--field-focus-color, #005bff);
+  outline-offset: 2px;
+}
