@@ -1,0 +1,24 @@
+.progress {
+  width: var(--progress-size, 96px);
+  aspect-ratio: 1;
+}
+
+.progress__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.progress__track,
+.progress__arc {
+  fill: none;
+  stroke-width: 8;
+}
+
+.progress__track {
+  stroke: var(--progress-track-color, #eaeff5);
+}
+
+.progress__arc {
+  stroke: var(--progress-color, #005bff);
+}

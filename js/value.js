@@ -15,6 +15,6 @@ export function toValue(input) {
 }
 
 export function isValidInput(text) {
-  if (!/^(\d+([.,]\d*)?)?$/.test(text)) return false;
+  if (!/^((0|[1-9]\d*)([.,]\d*)?)?$/.test(text)) return false;
   return !(Number(text.replace(',', '.')) > MAX);
 }
