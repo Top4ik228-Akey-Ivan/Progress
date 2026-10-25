@@ -12,8 +12,10 @@ export class Progress {
     #root;        // корневой div компонента
     #arc;         // синяя дуга
     #value = 0;   // текущее значение (единственный источник правды)
+    #animated = false;    // вращается ли блок
+    #hidden = false;      // скрыт ли блок
 
-    constructor(container, { value = 0 } = {}) {
+    constructor(container, { value = 0, animated = false, hidden = false } = {}) {
         this.#root = document.createElement('div');
         this.#root.className = 'progress';
         this.#root.setAttribute('role', 'progressbar');
@@ -31,10 +33,18 @@ export class Progress {
 
         svg.append(track, this.#arc);
         this.#root.append(svg);
-        container.append(this.#root);
+
+        const initial = toValue(value);
+        if (initial === null) {
+            console.warn(`Progress: начальное значение "${value}" проигнорировано`);
+        } else {
+            this.#value = initial;
+        }
+        this.#animated = Boolean(animated);
+        this.#hidden = Boolean(hidden);
 
         this.#render();
-        this.setValue(value);
+        container.append(this.#root);
     }
 
     setValue(input) {
@@ -43,12 +53,38 @@ export class Progress {
             console.warn(`Progress: значение "${input}" проигнорировано`);
             return;
         }
+        if (value === this.#value) return;
         this.#value = value;
         this.#render();
+        this.#root.dispatchEvent(
+            new CustomEvent('progress:change', { bubbles: true, detail: { value } })
+        );
     }
 
     getValue() {
         return this.#value;
+    }
+
+    setAnimated(on) {
+        this.#animated = Boolean(on);
+        this.#render();
+    }
+
+    isAnimated() {
+        return this.#animated;
+    }
+
+    setHidden(on) {
+        this.#hidden = Boolean(on);
+        this.#render();
+    }
+
+    isHidden() {
+        return this.#hidden;
+    }
+
+    destroy() {
+        this.#root.remove();
     }
 
     #render() {
@@ -58,5 +94,9 @@ export class Progress {
         // при 0 скруглённый конец оставил бы точку, поэтому дугу прячем
         this.#arc.style.visibility = this.#value === 0 ? 'hidden' : '';
         this.#root.setAttribute('aria-valuenow', this.#value);
+
+        this.#root.classList.toggle('progress--animated', this.#animated);
+        this.#root.classList.toggle('progress--hidden', this.#hidden);
+
     }
 }

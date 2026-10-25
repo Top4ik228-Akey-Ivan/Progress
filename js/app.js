@@ -1,5 +1,10 @@
 import { Progress } from './progress.js';
 
-const progress = new Progress(document.querySelector('#progress-container'), { value: 60 });
+const container = document.querySelector('#progress-container');
+const progress = new Progress(container, { value: 60 });
 
-window.progress = progress; // ВРЕМЕННО, чтобы управлять из консоли
+container.addEventListener('progress:change', (e) => {
+  console.log('Новое значение:', e.detail.value);
+});
+
+window.progress = progress;

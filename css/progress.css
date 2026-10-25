@@ -22,3 +22,21 @@
 .progress__arc {
   stroke: var(--progress-color, #005bff);
 }
+
+.progress--animated .progress__svg {
+  animation: progress-rotate var(--progress-period, 1.5s) linear infinite;
+}
+
+@keyframes progress-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.progress--hidden {
+  visibility: hidden;
+}
+
+.progress--hidden .progress__svg {
+  animation-play-state: paused;
+}
