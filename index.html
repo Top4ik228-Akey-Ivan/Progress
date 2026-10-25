@@ -8,12 +8,23 @@
 
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/progress.css">
+    <link rel="stylesheet" href="css/switch.css">
 </head>
 
 <body>
     <main class="app">
         <h1 class="app__title">Progress</h1>
         <div id="progress-container"></div>
+
+        <label class="switch">
+            <input class="switch__input" type="checkbox" role="switch" id="animate">
+            <span class="switch__label">Animate</span>
+        </label>
+
+        <label class="switch">
+            <input class="switch__input" type="checkbox" role="switch" id="hide">
+            <span class="switch__label">Hide</span>
+        </label>
     </main>
 
     <script type="module" src="js/app.js"></script>
