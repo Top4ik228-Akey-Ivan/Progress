@@ -8,30 +8,33 @@
 
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/progress.css">
-    <link rel="stylesheet" href="css/switch.css">
     <link rel="stylesheet" href="css/field.css">
+    <link rel="stylesheet" href="css/switch.css">
 </head>
 
 <body>
     <main class="app">
         <h1 class="app__title">Progress</h1>
-        <div id="progress-container"></div>
 
-        <label class="field">
-            <input class="field__input" id="value" type="text" inputmode="decimal" autocomplete="off" maxlength="6"
-                enterkeyhint="done">
-            <span class="field__label">Value</span>
-        </label>
+        <div class="app__progress" id="progress-container"></div>
 
-        <label class="switch">
-            <input class="switch__input" type="checkbox" role="switch" id="animate">
-            <span class="switch__label">Animate</span>
-        </label>
+        <div class="app__controls">
+            <label class="field">
+                <input class="field__input" id="value" type="text" inputmode="decimal" autocomplete="off" maxlength="6"
+                    enterkeyhint="done">
+                <span class="field__label">Value</span>
+            </label>
 
-        <label class="switch">
-            <input class="switch__input" type="checkbox" role="switch" id="hide">
-            <span class="switch__label">Hide</span>
-        </label>
+            <label class="switch">
+                <input class="switch__input" id="animate" type="checkbox" role="switch" autocomplete="off">
+                <span class="switch__label">Animate</span>
+            </label>
+
+            <label class="switch">
+                <input class="switch__input" id="hide" type="checkbox" role="switch" autocomplete="off">
+                <span class="switch__label">Hide</span>
+            </label>
+        </div>
     </main>
 
     <script type="module" src="js/app.js"></script>

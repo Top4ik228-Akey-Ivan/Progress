@@ -1,7 +1,10 @@
 :root {
-  --color-primary: #005bff;      /* дуга прогресса, включённый переключатель */
-  --color-track: #eaeff5;        /* серая подложка кольца */
-  --color-switch-off: #d5dee8;   /* выключенный переключатель */
+  --color-primary: #005bff;
+  /* дуга прогресса, включённый переключатель */
+  --color-track: #eaeff5;
+  /* серая подложка кольца */
+  --color-switch-off: #d5dee8;
+  /* выключенный переключатель */
   --color-text: #001a34;
   --color-bg: #ffffff;
 
@@ -35,4 +38,14 @@ body {
 .app__title {
   font-size: var(--font-size-base);
   font-weight: 400;
+}
+
+.app__progress {
+  margin: 24px 0;
+}
+
+.app__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
