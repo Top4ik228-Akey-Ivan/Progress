@@ -8,6 +8,8 @@
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   --font-size-base: 14px;
+
+  --page-padding: 20px;
 }
 
 *,
@@ -23,16 +25,54 @@ body {
   color: var(--color-text);
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent; /* без серой вспышки при тапе */
 }
 
 .app {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   min-height: 100vh;
-  min-height: 100dvh;
-  padding: 16px;
+  min-height: 100dvh;  /* учитывает адресную строку мобильного браузера */
+  padding: var(--page-padding);
 }
 
 .app__title {
+  position: absolute;
+  top: var(--page-padding);
+  left: var(--page-padding);
   font-size: var(--font-size-base);
   font-weight: 400;
+}
+
+.app__progress {
+  place-self: center;
+  --progress-size: clamp(96px, 38vmin, 200px);
+}
+
+.app__controls {
+  justify-self: center;
+  align-self: start;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+
+  --switch-width: 44px;
+}
+
+.app__controls .field,
+.app__controls .switch {
+  gap: 24px;
+}
+
+@media (orientation: landscape) {
+  .app {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app__controls {
+    align-self: center;
+    padding-top: 0;
+  }
 }
